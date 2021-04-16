@@ -18,6 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/qr-code/qrcode.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    @stack('script-link')
+
+    <style>
+        #qrcode img {
+            display: inline !important;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -47,6 +59,10 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('qr-code.login') }}">{{ __('Qr-Code Login') }}</a>
+                        </li>
 
                         @if (Route::has('register'))
                             <li class="nav-item">
@@ -87,4 +103,5 @@
     </main>
 </div>
 </body>
+@yield('script')
 </html>

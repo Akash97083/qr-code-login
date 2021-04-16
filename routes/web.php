@@ -21,4 +21,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('qr-code', [\App\Http\Controllers\QrCodeController::class, 'showQrCode'])->name('my-qr-code');
+// qr code login
+Route::post('qr-code-login', [\App\Http\Controllers\QrCodeController::class, 'qrCodeLogin'])
+    ->name('qr-code.login');
+
+Route::get('qr-code-login', [\App\Http\Controllers\QrCodeController::class, 'showQrCodeLoginForm']);
+
+// qr code generate
+Route::get('qr-code', [\App\Http\Controllers\QrCodeController::class, 'showQrCode'])
+    ->name('my-qr-code');
+
+Route::get('regenerate/qr-code', [\App\Http\Controllers\QrCodeController::class, 'regenerate'])
+    ->name('qr-code.regenerate');
